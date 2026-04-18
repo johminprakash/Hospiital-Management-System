@@ -1,0 +1,19 @@
+{% extends 'base.html' %}
+
+{% block content %}
+
+    <table class="bordered">
+        <tr>
+            <th class="bordered">Doctor Name</th>
+            <th class="bordered">Department</th>
+        </tr>
+        {% for i in details %}
+            <tr>
+                <td class="bordered">
+                    <a href="{{url_for('patient_logic.doctor_profile')}}?doc_id={{i[0]}}">{{i[3]}}</a></td>
+                <td class="bordered">Doctor Name</td>
+            </tr>
+        {% endfor %}
+    </table>
+
+{% endblock %}

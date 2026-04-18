@@ -1,0 +1,26 @@
+{% extends 'base.html' %}
+{% block content %}
+<h2 style="text-align:center;">Search Doctor</h2>
+<form method="POST" style="text-align:center;">
+    <label for="search_name">Doctor Name:</label>
+    <input type="text" id="search_name" name="name"><br><br>
+    <button type="submit">Search</button>
+</form>
+<br>
+{% if res %}
+<table class="bordered" style="margin:auto;">
+    <tr>
+        <th class="bordered">ID</th>
+        <th class="bordered">Name</th>
+        <th class="bordered">Specialization</th>
+    </tr>
+    {% for r in res %}
+    <tr>
+        <td class="bordered">{{r[0]}}</td>
+        <td class="bordered">{{r[1]}}</td>
+        <td class="bordered">{{r[2]}}</td>
+    </tr>
+    {% endfor %}
+</table>
+{% endif %}
+{% endblock %}

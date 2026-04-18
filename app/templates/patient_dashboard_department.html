@@ -1,0 +1,51 @@
+{% extends 'base.html' %}
+
+{% block content %}
+
+
+
+<h2>Department of {{dept_name}}</h2>
+<br>
+<p style="color:white">Click the name of the doctor to see his profile</p>
+<p style="color:white">Doctor's Availability Time may change according to other appointments. Click on the time to check actual availability and book your appointment</p>
+<br>
+
+<form method="POST" action="{{url_for('patient_logic.department_doctors')}}">
+<table class="bordered">
+    <tr>
+        <th class="bordered">Name of the Doctor</th>
+        <th class="bordered" >General Availability</th>
+        <th class="bordered">Consultancy Type</th>
+        <th class="bordered"></th>
+    </tr>
+
+    {% for did,d in doctors.items() %}
+    <tr>
+        <td class="bordered">
+            <a href="{{url_for('patient_logic.doctor_profile')}}?doc_id={{did}}">{{d.name}}</a>
+        </td>
+        <td class="bordered">
+        {% for day,slot in d.availability.items() %}
+    
+                <h5 style="color:white">{{day}}</h5>
+                {% for id,time in slot.items() %}
+                    <input type="radio" name="slot" value="{{id}}" required>{{time}}
+                    <br>
+                <br>
+                <br>
+                {% endfor %}
+        {% endfor %}
+        </td>
+        <td class="bordered">
+            <input type="radio" name="c_type" value="1" required>Follow-up:{{d.duration[0]}} mins<br>
+            <input type="radio" name="c_type" value="2">Normal Consultancy:{{d.duration[1]}} mins<br>
+            <input type="radio" name="c_type" value="3">Procedure:{{d.duration[2]}} mins<br>
+        </td>
+        <td class="bordered">
+            <button type="submit" class="form_btn">Proceed</button>
+        </td>
+    </tr>
+    {% endfor %}
+</table>
+</form>
+{% endblock %}

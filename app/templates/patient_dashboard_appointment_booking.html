@@ -1,0 +1,110 @@
+<style>
+    span,th,td{
+        color:white
+    }
+    
+</style>
+
+{% extends 'base.html' %}
+
+{% block content %}
+
+    <h2>Appointment booking</h2>
+    <br>
+    <span >Department:{{department[0]}}</span>
+    <br>
+    <span>  Doctor:name:{{doctor[0]}}   </span>
+    <br>
+    <span>Consultancy Type:
+        {% if c_type == "1" %}
+             Follow-up
+        {% elif c_type == "2" %}
+            Normal Consultancy
+        {% elif c_type == "3" %}
+            Procedure
+        {% endif %}
+    </span>
+    <br>
+    <span>Duration:{{duration}} minutes</span>
+    <br>
+    <span>Day:{{slot[0]}}</span>
+    <br>
+    <span>Timing:{{slot[1]}}-{{slot[2]}}</span>
+
+    <form method="POST" action="{{url_for('patient_logic.appointment_booking')}}"> 
+    <input type="hidden" name="bts" value="{{time[0]}}"> 
+    <table class="bordered">
+        <tr>
+            <th class="bordered">Date</th>
+            <th class="bordered" style="width:60%">Timing</th>
+        </tr>
+        <tr>
+                <td class="bordered">{{date[0]}}</td>
+                <td class="bordered">
+                    {% for i in slots1 %}
+                        <input type="radio" name="free_slots"
+                        value='{{ {"avai_id": avai_id,
+                         "date": date[0],
+                          "start_time": i[0], 
+                          "end_time": i[1],
+                          "duration":duration,
+                           "c_type":c_type} | tojson }}' required>{{ i[0] }} - {{ i[1] }}
+                        <br>
+                    {% endfor %}
+                </td>
+        </tr>
+        <tr>
+                <td class="bordered">{{date[1]}}</td>
+                <td class="bordered">
+                    {% for i in slots2 %}
+                        <input type="radio" name="free_slots"
+                        value='{{ {"avai_id": avai_id, 
+                        "date": date[0],
+                         "start_time": i[0], 
+                         "end_time": i[1], 
+                         "duration": duration,
+                         "c_type":c_type }| tojson }}'>{{ i[0] }} - {{ i[1] }}
+                        <br>
+                    {% endfor %}
+                </td>       
+        </tr>
+        <tr>
+                <td class="bordered">{{date[2]}}</td>
+                <td class="bordered">
+                    {% for i in slots3 %}
+                        <input type="radio" name="free_slots"
+                        value='{{ {"avai_id": avai_id,
+                         "date": date[0],
+                          "start_time": i[0],
+                           "end_time": i[1],
+                            "duration": duration,
+                            "c_type":c_type} | tojson }}'>{{ i[0] }} - {{ i[1] }}
+                        <br>
+                    {% endfor %}
+                </td>
+        </tr>
+        <tr>
+                <td class="bordered">{{date[3]}}</td>
+                <td class="bordered">
+                    {% for i in slots4 %}
+                        <input type="radio" name="free_slots"
+                        value='{{ {"avai_id": avai_id,
+                         "date": date[0],
+                          "start_time": i[0], 
+                          "end_time": i[1],
+                            "duration": duration,
+                            "c_type":c_type} | tojson }}'>{{ i[0] }} - {{ i[1] }}
+                        <br>
+                    {% endfor %}
+                </td>
+        </tr>
+    </table>
+    <br>
+
+    <div style="text-align: center;">
+    <button type="submit" class="form_btn">Proceed</button>
+    </div>
+
+    </form>
+
+{% endblock %}

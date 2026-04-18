@@ -1,0 +1,20 @@
+{% extends 'base.html' %}
+
+{% block content %}
+
+    <h2>Appointment Booking</h2>
+    <div style="text-align: center;">
+    <h3>Fix appointment time</h3>
+    <form method="POST"action="{{url_for('patient_logic.appointment_final',min=min,max=max,avai_id=avai_id,date=date,c_type=c_type,duration=duration)}}">
+    {% for i in arr %}
+        <input name="start_time" value="{{i}}" type="radio" required>{{i}}
+    {% endfor %}
+    <div style="text-align: center;">
+    <br>
+    <button type="submit" class="form_btn">Proceed</button>
+    <br>
+    </div>
+    </form>
+    </div>
+
+{% endblock %}

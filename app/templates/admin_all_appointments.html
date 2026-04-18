@@ -1,0 +1,34 @@
+{% extends 'base.html' %}
+{% block content %}
+<h2 style="text-align:center;">Appointments</h2>
+<table class="bordered">
+    <tr>
+        <th class="bordered">ID</th>
+        <th class="bordered">Doctor</th>
+        <th class="bordered">Patient</th>
+        <th class="bordered">Date</th>
+        <th class="bordered">Time</th>
+        <th class="bordered">Status</th>
+    </tr>
+    {% for i in app %}
+    <tr>
+        <td class="bordered">{{i[0]}}</td>
+        <td class="bordered">{{i[1]}}</td>
+        <td class="bordered">{{i[2]}}</td>
+        <td class="bordered">{{i[3]}}</td>
+        <td class="bordered">{{i[4]}}-{{i[5]}}</td>
+        <td class="bordered">
+            {% if i[6] == 1 %}
+                Booked
+            {% elif i[6] == 0 %}
+                Completed
+            {% elif i[6] == -1 %}
+                Cancelled
+            {% else %}
+                Unknown
+            {% endif %}
+        </td>
+    </tr>
+    {% endfor %}
+</table>
+{% endblock %}

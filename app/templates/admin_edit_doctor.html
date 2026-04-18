@@ -1,0 +1,39 @@
+{% extends 'base.html' %}
+
+{% block content %}
+<h2>Edit Doctor</h2>
+<form action="{{ url_for('admin_logic.edit_doctor') }}" method="post" style="text-align:center;">
+    <input type="hidden" name="did" value="{{ did }}">
+    <table style="margin:auto;">
+        <tr>
+            <td><label for="name">Name:</label></td>
+            <td><input type="text" name="name" id="name"></td>
+        </tr>
+        <tr>
+            <td><label for="special">Specialization:</label></td>
+            <td><input type="text" name="special" id="special"></td>
+        </tr>
+        <tr>
+            <td><label for="quali">Qualification:</label></td>
+            <td><input type="text" name="quali" id="quali"></td>
+        </tr>
+        <tr>
+            <td><label for="exp">Experience Years:</label></td>
+            <td><input type="text" name="exp" id="exp"></td>
+        </tr>
+        <tr>
+            <td><label for="phone">Phone:</label></td>
+            <td><input type="text" name="phone" id="phone"></td>
+        </tr>
+        <tr>
+            <td>Status:</td>
+            <td>
+                <label><input type="radio" name="status" value="1"> Active</label>
+                <label><input type="radio" name="status" value="0"> Inactive</label>
+            </td>
+        </tr>
+    </table>
+    <br>
+    <button type="submit">Save</button>
+</form>
+{% endblock %}

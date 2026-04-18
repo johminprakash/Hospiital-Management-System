@@ -1,0 +1,81 @@
+{% extends 'base.html' %}
+
+{% block content %}
+<h2>My Profile</h2>
+<div style="text-align: center">
+<table style="margin:auto; text-align:centerl;color: white;">
+    <tr>
+        <td style="text-align: left">Name</td>
+        <td style="text-align: left;">:{{details[0]}}</td>
+    </tr>
+    <tr>
+        <td style="text-align: left">Specialization</td>
+        <td style="text-align: left;">:{{details[1]}}</td>
+    </tr>
+    <tr>
+        <td style="text-align: left">Qualification</td>
+        <td style="text-align: left;">:{{details[2]}}</td>
+    </tr>
+    <tr>
+        <td style="text-align: left">Experience Years</td>
+        <td style="text-align: left;">:{{details[3]}}</td>
+    </tr>
+    <tr>
+        <td style="text-align: left">Phone</td>
+        <td style="text-align: left;">:{{details[4]}}</td>
+    </tr>
+    <tr>
+        <td style="text-align: left">Basic time for slot</td>
+        <td style="text-align: left;">:{{details[5]}}</td>
+    </tr>
+    <tr>
+        <td style="text-align: left">No. of slots for follow-up</td>
+        <td style="text-align: left;">:{{details[6]}}</td>
+    </tr>
+    <tr>
+        <td style="text-align: left">No. of slots for normal consulatncy</td>
+        <td style="text-align: left;">:{{details[7]}}</td>
+    </tr>
+    <tr>
+        <td style="text-align: left">No. of slots for procedure</td>
+        <td style="text-align: left;">:{{details[8]}}</td>
+    </tr>
+</table>
+</div>
+<br>
+<a href="/doctor/edit_profile" style="margin-left: 35%; ">Edit Profile</a>
+<a href="/doctor/change_password" style="margin-left: 3%; ">Change Password</a>
+<a href="/doctor/show_availability" style="margin-left: 3%; ">See and Edit Availability</a>
+<br>
+<h2>Appointment History</h2>
+<table class="bordered">
+            <tr>
+                <th class="bordered" >Patient Name</th>
+                <th class="bordered">Age</th>
+                <th class="bordered">Gender</th>
+                <th class="bordered">Date</th>
+                <th class="bordered">Time</th>
+                <th class="bordered">Status</th>
+                <th class="bordered">Medicine</th>
+                <th class="bordered">Notes</th>
+                <th class="bordered"></th>
+            </tr>
+            {% for a in app%}
+            <tr>
+                <td class="bordered"><a href="{{url_for('doctor_logic.patient_history')}}?patient_id={{ a[1] }}">{{a[0]}}</a></td>
+                <td class="bordered">{{a[2]}}</td>
+                <td class="bordered">{{a[3]}}</td>
+                <td class="bordered">{{a[4]}}</td>
+                <td class="bordered">{{a[5]}}-{{a[6]}}</td>
+                {% if a[10]==1 %}    <td class="bordered">Booked</td>
+                {% elif a[10]==0 %}    <td class="bordered">Completed</td>
+                {% elif a[10]==-1 %}    <td class="bordered">Cancelled</td>
+                {% endif %}
+                <td class="bordered">{{a[7]}}</td>
+                <td class="bordered">{{a[8]}}</td>
+                <td class="bordered"><a href="{{url_for('doctor_logic.edit_appointment')}}?app={{a[9]}}">Edit</a></td>
+            </tr>
+            {% endfor %}
+        </table>
+
+{% endblock %}

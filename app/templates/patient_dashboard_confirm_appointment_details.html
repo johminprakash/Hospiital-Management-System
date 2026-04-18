@@ -1,0 +1,41 @@
+{% extends 'base.html' %}
+
+{% block content %}
+
+<form method="POST" action="{{ url_for('patient_logic.appointment_confirmed') }}">
+    <input type="hidden" name="doctor_id" value="{{ doctor[0] }}">
+    <input type="hidden" name="date" value="{{ date }}">
+    <input type="hidden" name="time" value="{{ time }}">
+    <input type="hidden" name="avai_id" value="{{ avai_id }}">
+    <input type="hidden" name="consult" value="{{consult}}">
+    
+<div style="text-align: center; color:white">
+    <h2>Confirm Details</h2>
+    <br>
+    <table style="margin: 0 auto; ">
+        <tr>
+            <td>Department</td>
+            <td style="text-align: left;">:{{doctor[2]}}</td>
+        </tr>
+        <tr>
+            <td>Doctor Name</td>
+            <td style="text-align: left;">:{{doctor[1]}}</td>
+        </tr>
+        <tr>
+            <td>Consultancy Type</td>
+            <td style="text-align: left;">:{{consult}}</td>
+        </tr>
+        <tr>
+            <td>Date</td>
+            <td style="text-align: left;">:{{date}}</td>
+        </tr>
+        <tr>
+            <td>Time</td>
+            <td style="text-align: left;">:{{time}}</td>
+        </tr>
+    </table>
+    <br>
+    <button type="submit" class="form_btn">Book Appointment</button>
+</div>
+</form>
+{% endblock %}

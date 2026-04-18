@@ -1,0 +1,30 @@
+{% extends 'base.html' %}
+
+{% block content %}
+
+    <h2>Doctor Profile</h2>
+    <br>
+    <table style="color:white; text-align:right;margin:auto">
+        <tr>
+            <td>Name:</td>
+            <td style="text-align: left;">{{details[3]}}</td>
+        </tr>
+        <tr>
+            <td>Qualification:</td>
+            <td style="text-align: left;">{{details[6]}}</td>
+        </tr>
+        <tr>
+            <td>Specialization: </td>
+            <td style="text-align: left;">{{details[5]}}</td>
+        </tr>
+        <tr>
+            <td>Years of Experience:</td>
+            <td style="text-align: left;">{{details[7]}}</td>
+        </tr>
+        <tr>
+            <td>Phone:</td>
+            <td style="text-align: left;">{{details[8]}}</td>
+        </tr>
+    </table>
+
+{% endblock %}

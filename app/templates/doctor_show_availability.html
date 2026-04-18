@@ -1,0 +1,24 @@
+{% extends 'base.html' %}
+
+{% block content %}
+
+    <h2>My availability</h2>
+    <table class="bordered">
+        <tr>
+        <th class="bordered">Day</th>
+        <th class="bordered">Start Time</th>
+        <th class="bordered">End Time</th>
+        <th class="bordered"></th>
+        {% for i in avai %}
+        <tr>
+            <td class="bordered">{{i[1]}}</td>
+            <td class="bordered">{{i[2]}}</td>
+            <td class="bordered">{{i[3]}}</td>
+            <td class="bordered"><a href="{{url_for('doctor_logic.edit_availability',availability_id=i[0])}}">Edit</a><br> 
+          <a href="{{url_for('doctor_logic.remove_availability',availability_id=i[0])}}">Remove</a></td>
+        </tr>
+        </tr>
+        {% endfor %}
+    </table>
+<a href="{{ url_for('doctor_logic.add_availability') }}" class="form_btn" style="display:block; margin:20px auto; text-align:center;">Add Availability</a>
+{% endblock %}

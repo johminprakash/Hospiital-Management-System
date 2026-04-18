@@ -1,0 +1,25 @@
+{% extends 'base.html' %}
+
+{% block content %}
+
+    <h2>Edit Availability</h2>
+    <br>
+    <form action="{{url_for('doctor_logic.edit_availability',availability_id=avai_id)}}" method="POST">
+        <table style="margin: auto;">
+            <tr>
+                <td class="bordered">Day</td>
+                <td class="bordered">:<input type="TEXT" name="day"></td>
+            </tr>
+            <tr>
+                <td class="bordered">Start Time(in 24 Hour Format)</td>
+                <td class="bordered">:<input type="TEXT" name="start_time" pattern="[0-2][0-9]:[0-5][0-9]" placeholder="HH:MM"></td>
+            </tr>
+            <tr>
+                <td class="bordered">End Time(in 24 Hour Format)</td>
+                <td class="bordered">:<input type="TEXT" name="end_time" pattern="[0-2][0-9]:[0-5][0-9]" placeholder="HH:MM"></td>
+            </tr>
+        </table>
+    <button style="display:block; margin:20px auto;" type="submit" class="form_btn">Edit availability</button>
+    </form>
+
+{% endblock %}

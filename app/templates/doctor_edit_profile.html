@@ -1,0 +1,58 @@
+{% extends 'base.html' %}
+
+{% block content %}
+
+<h2>Edit Profile</h2>
+
+{% if error %}
+<p>{{error}}</p>
+{% endif %}
+
+
+<form method="POST" action="{{ url_for('doctor_logic.edit_profile') }}" style="text-align:center">
+    <div style="display:flex; justify-content:center;">
+        <table style="text-align:center">
+            <tr>
+                <td><label>Name:</label></td>
+                <td><input name="name" type="text" class="form_field" style="margin-bottom: 10px;"></td>
+            </tr>
+            <tr>
+                <td><label>Speialization:</label></td>
+                <td><input name="special" type="text" class="form_field" style="margin-bottom: 10px;"></td>
+            </tr>
+            <tr>
+                <td><label>Qualification:</label></td>
+                <td><input name="quali" type="text" class="form_field" style="margin-bottom: 10px;"></td>
+            </tr>
+            <tr>
+                <td><label>Years of Experience</label></td>
+                <td><input name="exp" type="text" class="form_field" style="margin-bottom: 10px;"></td>
+            </tr>
+            <tr>
+                <td><label>Phone Number:</label></td>
+                <td><input name="phone" type="text" class="form_field" style="margin-bottom: 10px;"></td>
+            </tr>
+            <tr>
+                <td><label>Basic Time Slot:</label></td>
+                <td><input name="bts" type="text" class="form_field" style="margin-bottom: 10px;"></td>
+            </tr>
+            <tr>
+                <td><label>Number of slots for follow-up:</label></td>
+                <td><input name="follow_up" type="text" class="form_field" style="margin-bottom: 10px;"></td>
+            </tr>
+            <tr>
+                <td><label>Number of slots for normal consultancy:</label></td>
+                <td><input name="normal" type="text" class="form_field" style="margin-bottom: 10px;"></td>
+            </tr>
+            <tr>
+                <td><label>Number of slots for procedure:</label></td>
+                <td><input name="procedure" type="text" class="form_field" style="margin-bottom: 10px;"></td>
+            </tr>
+            </table>
+    </div>
+    <button type="submit" class="form_btn">Save Changes</button>
+</form>
+
+<p style="color: red;">Note: If you are changing tme slots ,appointments already booked won't change and only the appointments booked here after will change.This may lead to unusual gaps during the visiting time for next one month  </p>
+{% endblock %}
+

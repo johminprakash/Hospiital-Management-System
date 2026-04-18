@@ -1,0 +1,29 @@
+{% extends 'base.html' %}
+
+{% block content %}
+
+    <h2>Edit Appointment</h2>
+
+    <form method="POST" action="{{url_for('doctor_logic.edit_appointment')}}">
+        <input type="hidden" name="appointment_id" value={{app}}>
+
+        <table style="margin-left: 38%;">
+            <tr>
+            <td>Medicine:</td>
+            <td><input type="text" name="medicine"></td>
+            </tr>
+            <tr>
+            <td>Notes:</td>
+            <td><input type="text" name="notes"></td>
+            </tr>
+            <tr>
+            <td>Status</td>
+            <td><input type="radio" name="status" value=1>Booked
+            <input type="radio" name="status" value=0>Completed
+            <input type="radio" name="status" value=-1>Cancelled</td>
+            </tr>
+        </table>
+        <button type="submit" style="margin-left:48%;" class="form_btn">Save</button>
+    </form>
+
+{% endblock %}

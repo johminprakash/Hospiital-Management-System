@@ -1,0 +1,90 @@
+{% extends 'base.html' %}
+
+{% block content %}
+
+    
+    <p style="margin-left:90%; display:inline-block">👤</p>
+    <a href="{{url_for('doctor_logic.my_profile')}}" style="color:white; display:inline-block; margin-left:5px;">My profile</a>
+    <div style="display: flex; justify-content: space-between; align-items: flex-start; gap: 20px;">
+        <div style="display:inline-block; width: 30%; text-align: left;">
+        <h2 style="display: inline-block;">Appointment Status Update</h2>
+        {% if finished_appointments %}
+            <table class="bordered">
+            <tr>
+                <th class="bordered" >Patient Name</th>
+                <th class="bordered">Date</th>
+                <th class="bordered">Time</th>
+                <th class="bordered" style="width: 40%;">Status</th>
+                <th class="bordered"></th>
+            </tr>
+            {% for a in finished_appointments%}
+            <form method="POST" action="{{url_for('doctor_logic.status_update')}}">
+                <input type="hidden" name="app_id" value="{{a[7]}}">
+
+            <tr>
+                <td class="bordered"><a href="{{url_for('doctor_logic.patient_history')}}?patient_id={{ a[1] }}">{{a[0]}}</a></td>
+                <td class="bordered">{{a[4]}}</td>
+                <td class="bordered">{{a[5]}}-{{a[6]}}</td>
+                <td class="bordered" style="width: 40%;"><input type="radio" name="status" value=1 checked>Booked<br>
+                <input type="radio" name="status" value=0 >Completed<br>
+                <input type="radio" name="status" value=-1 >Cancelled</td>
+                <td class="bordered"><button type="submit" class="form_btn">Save Changes</button></td>
+            </tr>
+            </form>
+            {% endfor %}
+        </table>
+        {% else %}
+        <p>No records found</p>
+        {% endif %}
+        
+    </div>
+        <br>
+        <div style="display:inline-block; width: 30%; ">
+        <h2 style="display: inline-block;">View your upcoming appointments here</h2>
+        {% if app %}
+            <table class="bordered">
+            <tr>
+                <th class="bordered" >Patient Name</th>
+                <th class="bordered">Age</th>
+                <th class="bordered">Gender</th>
+                <th class="bordered">Date</th>
+                <th class="bordered">Time</th>
+            </tr>
+            {% for a in app%}
+            <tr>
+                <td class="bordered"><a href="{{url_for('doctor_logic.patient_history')}}?patient_id={{ a[1] }}">{{a[0]}}</a></td>
+                <td class="bordered">{{a[2]}}</td>
+                <td class="bordered">{{a[3]}}</td>
+                <td class="bordered">{{a[4]}}</td>
+                <td class="bordered">{{a[5]}}-{{a[6]}}</td>
+            </tr>
+            {% endfor %}
+        </table>
+        {% else %}
+        <p>No records found</p>
+        {% endif %}
+    </div>
+
+        <div style="display:inline-block; width: 30%; text-align: right; vertical-align: top;">
+            <h2>My Patients</h2>
+            {% if patients %}
+            <table class="bordered">
+            <tr>
+                <th class="bordered">Patient_name</th>
+                <th class="bordered">Age</th>
+                <th class="bordered">Gender</th>
+            </tr>
+            {% for i in patients %}
+            <tr>
+                <td class="bordered"> {{i[0]}}</td>
+                <td class="bordered">{{i[1]}}</td>
+                <td class="bordered">{{i[2]}}</td>
+            </tr>
+            {% endfor %}
+            </table>
+            {% else %}
+        <p>No records found</p>
+        {% endif %}
+        </div>
+        </div>
+{% endblock %}

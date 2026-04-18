@@ -1,0 +1,20 @@
+{% extends 'base.html' %}
+{% block content %}
+<h2 style="text-align:center;">Patients</h2>
+<table class="bordered">
+    <tr>
+        <th class="bordered">Name</th>
+        <th class="bordered">Gender</th>
+        <th class="bordered">Age</th>
+        <th class="bordered">Phone</th>
+    </tr>
+    {% for p in pat %}
+    <tr>
+        <td class="bordered">{{p[0]}}</td>
+        <td class="bordered">{{p[1]}}</td>
+        <td class="bordered">{{p[2]}}</td>
+        <td class="bordered">{{p[3]}}</td>
+    </tr>
+    {% endfor %}
+</table>
+{% endblock %}

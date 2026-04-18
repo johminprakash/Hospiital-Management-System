@@ -1,0 +1,40 @@
+{% extends 'base.html' %}
+{% block content %}
+<h2 style="text-align:center;">Doctors</h2>
+<table class="bordered">
+    <tr>
+        <th class="bordered">Name</th>
+        <th class="bordered">Specialization</th>
+        <th class="bordered">Qualification</th>
+        <th class="bordered">Experience</th>
+        <th class="bordered">Phone</th>
+        <th class="bordered">Availability</th>
+        <th class="bordered">Active</th>
+        <th class="bordered">Edit</th>
+        <th class="bordered">Remove</th>
+    </tr>
+    {% for d, av in doc %}
+    <tr>
+        <td class="bordered">{{d[1]}}</td>
+        <td class="bordered">{{d[2]}}</td>
+        <td class="bordered">{{d[3]}}</td>
+        <td class="bordered">{{d[4]}}</td>
+        <td class="bordered">{{d[5]}}</td>
+        <td class="bordered">
+            {% for a in av %}
+                {{a[0]}} : {{a[1]}} - {{a[2]}} <br>
+            {% endfor %}
+        </td>
+        <td class="bordered">
+            {% if d[6] == 1 %}
+                Active
+            {% else %}
+                Inactive
+            {% endif %}
+        </td>
+        <td class="bordered"><a href="{{url_for('admin_logic.edit_doctor', did=d[0])}}">Edit</a></td>
+        <td class="bordered"><a href="{{url_for('admin_logic.remove_doctor', did=d[0])}}">Remove</a></td>
+    </tr>
+    {% endfor %}
+</table>
+{% endblock %}

@@ -1,0 +1,48 @@
+{% extends 'base.html' %}
+
+{% block content %}
+
+<h2>Patient Details</h2>
+<br>
+<h3 style="text-align: center;">Personal Details</h3>
+<table style="margin: auto;  color: white ;">
+<tr>
+    <td style="text-align:left">Name</td>
+    <td style="text-align:left">:{{details[0]}}</td>
+</tr>
+<tr>
+    <td style="text-align:left">Age</td>
+    <td style="text-align:left">:{{details[1]}}</td>
+</tr>
+<tr>
+    <td style="text-align:left">Gender</td>
+    <td style="text-align:left">:{{details[2]}}</td>
+</tr>
+<tr>
+    <td style="text-align:left">Phone</td>
+    <td style="text-align:left">:{{details[3]}}</td>
+</tr>
+</table>
+
+<br>
+
+<h3 style="text-align: center;">Appointment details</h3>
+<table class="bordered" >
+    <tr>
+    <th class="bordered">Name</th>
+    <th class="bordered">Department</th>
+    <th class="bordered">Date</th>
+    <th class="bordered">Medicine</th>
+    <th class="bordered">Notes</th>
+    </tr>
+    {% for i in app %}
+        <tr>
+            <td class="bordered">{{i[0]}}</td>
+            <td class="bordered">{{i[1]}}</td>
+            <td class="bordered">{{i[2]}}</td>
+            <td class="bordered">{{i[3]}}</td>
+            <td class="bordered">{{i[4]}}</td>
+        </tr>
+    {% endfor %}
+</table>
+{% endblock %}

@@ -1,0 +1,41 @@
+{% extends 'base.html' %}
+
+{% block content %}
+<h2>Welcome to BestMed Multispeciality Hospital</h2>
+
+<br><br>
+
+<div style="display: inline-block; width: 45%; text-align: center;">
+<h3>Login   </h3>
+<ul style="list-style-position: inside;">
+    <li><a href="/admin_login">Login as Admin </a></li>
+    <li><a href="/doctor_login">Login as Doctor </a></li>
+    <li><a href="/patient_login">Login as Patient</a></li>
+</ul>
+</div>
+
+<div style="display: inline-block;  width:45%; text-align: center; ">
+<h5 style="color:white">New Patient?</h5>
+<a href="/patient_register">Click here to register.</a>
+</div>
+
+<br><br>
+<h3>About Us</h3>
+<p>
+Welcome to BestMed Multispecialty Hospital, a center known for modern medical care and 
+patient-focused service. We combine advanced facilities with experienced medical teams to 
+provide reliable treatment across a variety of departments.
+</p>
+
+<ul>
+    <li>24/7 Emergency & Trauma Center</li>
+    <li>Advanced Diagnostic Imaging & Labs</li>
+    <li>Robotic Surgery & Minimally Invasive Procedures</li>
+    <li>Neonatal & Pediatric Intensive Care Units</li>
+    <li>Holistic Wellness & Rehabilitation Programs</li>
+</ul>
+
+<br><br>
+<h3>Our Motto</h3>
+<p>Your health. Our mission. Every moment.</p>
+{% endblock %}

@@ -1,0 +1,29 @@
+{% extends 'base.html' %}
+
+{% block content %}
+<h2>Doctor Login</h2>
+<br>
+
+{% if error %}
+    <p style="text-align:center; color:red; font-size:10px">{{error}}</p>
+    <br>
+{% endif %}  
+
+<form style="text-align:center" method="POST" action="/doctor_login">
+    <div style="display:flex; justify-content:center;">
+        <table>
+            <tr>
+                <td><label>Username:</label></td>
+                <td><input name="username" type="text" class="form_field" style="margin-bottom: 10px;"></td>
+            </tr>
+            <tr>
+                <td><label>Password: </label></td>
+                <td><input name="password" type="password" class="form_field" style="margin-bottom: 10px;"></td>
+            </tr>
+        </table>
+    </div>
+    <button type="submit" class="form_btn">Login</button>
+</form>
+{% endblock %}
+
+  

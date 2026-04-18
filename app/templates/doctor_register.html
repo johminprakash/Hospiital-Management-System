@@ -1,0 +1,66 @@
+{% extends 'base.html' %}
+
+{% block content %}
+
+<h2>New Patient Register</h2>
+
+<br>
+{% if error %}
+    <p style="text-align:center; color:red; font-size:10px">{{error}}</p>
+    <br>
+{% endif %}  
+
+<form style="text-align:center" method="POST" action="/patient_register">
+    <div style="display:flex; justify-content:center;">
+        <table style="text-align:center">
+            <tr>
+                <td><label>Name:</label></td>
+                <td><input name="name" type="text" class="form_field" style="margin-bottom: 10px;"></td>
+            </tr>
+            <tr>
+                <td><label>Age:</label></td>
+                <td><input name="age" type="text" class="form_field" style="margin-bottom: 10px;"></td>
+            </tr>
+            <tr>
+                <td><label>Gender:</label></td>
+                <td>
+                    <label style="color:white;">
+                    <input type="radio" name="gender" value="M"> Male
+                    </label>
+                    <label style="color:white; margin-left:20px;">
+                    <input type="radio" name="gender" value="F"> Female
+                    </label>
+                </td>
+            </tr>
+            <tr>
+                <td><label>Phone Number:</label></td>
+                <td><input name="phone" type="text" class="form_field" style="margin-bottom: 10px;"></td>
+            </tr>
+            <tr>
+                <td><label>Username:</label></td>
+                <td><input name="username" type="text" class="form_field" style="margin-bottom: 10px;"></td>
+            </tr>
+            <tr>
+                <td><label>Password: </label></td>
+                <td>
+                    <input name="password" type="password" class="form_field">
+                </td>
+            </tr>
+            <tr>
+                <td></td>
+                <td>
+                    <p style="color:white;margin-bottom: 10px;">Minimum 8 characters</p>
+                </td>
+            <tr>
+                <td><label>Confirm Password: </label></td>
+                <td><input name="confirm_password" type="password" class="form_field" style="margin-bottom: 10px;"></td>
+            </tr>
+        </table>
+    </div>
+    <button type="submit" class="form_btn">Register</button>
+    <br>
+    Already a user?
+    <a href="/patient_login">Login here?</a>
+</form>
+{% endblock %}
+

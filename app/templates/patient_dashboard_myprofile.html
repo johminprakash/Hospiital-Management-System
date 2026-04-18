@@ -1,0 +1,60 @@
+{% extends 'base.html' %}
+
+{% block content %}
+
+    <h2 style="text-align: center;">👤My Profile</h2>
+    <br>
+    <table style="color:white; text-align:right;margin:auto">
+        <tr>
+            <td >Name:</td>
+            <td style="text-align: left;">{{details[0]}}</td>
+        </tr>
+        <tr>
+            <td >Age:</td>
+            <td style="text-align: left;">{{details[1]}}</td>
+        </tr>
+        <tr>
+            <td >Gender:</td>
+            <td style="text-align: left;">{{details[2]}}</td>
+        </tr>
+        </tr>
+        <tr>
+            <td>Phone Number:</td>
+            <td style="text-align: left;">{{details[3]}}</td>
+        </tr>
+    </table>
+
+    <a href="/patient_dashboard/edit_profile" style="margin-left: 39%; ">Edit Profile</a>
+    <a href="/patient_dashboard/change_password" style="margin-left: 3%; ">Change Pssword</a>
+
+    <br>
+
+    <br>
+    <h3 style="text-align:center" >Appointment History</h3>
+    <table class="bordered">
+        <tr>
+            <th class="bordered">Appointment ID</th>
+            <th class="bordered">Doctor Name</th>
+            <th class="bordered">Deepartment</th>
+            <th class="bordered">Appointment Date</th>
+            <th class="bordered">Appointment Time</th>
+            <th class="bordered">Medicine</th>
+            <th class="bordered">Notes</th>
+        </th>
+        {% for i in app %}
+            <tr>
+                <td class="bordered">{{i[7]}}</td>
+                <td class="bordered">{{i[0]}}</td>
+                <td class="bordered">{{i[1]}}</td>
+                <td class="bordered">{{i[2]}}</td>    
+                <td class="bordered">{{i[3]}}-{{i[4]}}</td>
+                <td class="bordered">{{i[5]}}</td>
+                <td class="bordered">{{i[6]}}</td>
+            </tr>
+        {% endfor %}
+
+    </table>
+
+    
+
+{% endblock %}
